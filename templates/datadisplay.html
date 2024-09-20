@@ -1,0 +1,30 @@
+{% extends 'header.html' %}
+{% block datadisplay %}
+<html>
+    <head>
+        <title>Admin</title>
+    </head>
+    <body>
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Age</th>
+                </thead>
+                <tbody>
+                {% for i in range(num_users) %}
+                    <tr>
+                        <td>{{users_index[i]}}</td>
+                        <td>{{username[i]}}</td>
+                        <td>{{gender[i]}}</td>
+                        <td>{{age[i]}}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+{% endblock %}
