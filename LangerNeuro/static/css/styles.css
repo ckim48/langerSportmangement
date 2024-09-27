@@ -1,0 +1,61 @@
+.mynav{
+    background-color : white;
+}
+#login{
+    font-family: "Playfair Display", serif;
+    background: linear-gradient(170deg, #3bf9f9, #19a9d7);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-card{
+    max-width: 500px;
+    padding: 15px 35px;
+}
+.btn-login{
+    width:100%;
+    background-color: aquamarine;
+    color: white;
+    border-radius: 100px;
+}
+.btn-login:hover{
+    background-color: deepskyblue;
+    color: white;
+}
+.login-header{
+    font-family: "Playfair Display", serif;
+}
+.hero{
+    position: relative;
+    background: url('../img/backgroundimg.jpg') no-repeat center center;
+    height: 100vh;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+.hero::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: -1;
+}
+.hero h1{
+    font-size: 50px;
+    z-index: 999;
+}
+.hero p{
+    font-size: 36px;
+    z-index: 999;
+}
+.error-message{
+    color:orangered
+}
