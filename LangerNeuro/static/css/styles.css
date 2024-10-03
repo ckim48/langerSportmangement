@@ -1,9 +1,27 @@
 .mynav{
-    background-color : white;
+    background-color: lightslategray;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+.navbar-brand {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+.nav-link {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+.nav-link:hover {
+    color: #f2f2f2;
+}
+.nav-link:focus, .nav-link:active {
+    color: white;
+    outline: none;
 }
 #login{
-    font-family: "Playfair Display", serif;
-    background: linear-gradient(170deg, #3bf9f9, #19a9d7);
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(170deg, #4E342E, #3E2723);
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -12,19 +30,22 @@
 .login-card{
     max-width: 500px;
     padding: 15px 35px;
+    background-color: #FFF;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 .btn-login{
-    width:100%;
-    background-color: aquamarine;
+    background-color: #3E2723;
     color: white;
-    border-radius: 100px;
+    border-radius: 25px;
+    padding: 10px 15px;
+    transition: background-color 0.3s ease;
 }
 .btn-login:hover{
-    background-color: deepskyblue;
-    color: white;
+    background-color: #5D4037;
 }
 .login-header{
-    font-family: "Playfair Display", serif;
+    font-family: "Poppins", sans-serif;
 }
 .hero{
     position: relative;
@@ -45,8 +66,22 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.5);
     z-index: -1;
+}
+.hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 40px;
 }
 .hero h1{
     font-size: 50px;
@@ -57,5 +92,39 @@
     z-index: 999;
 }
 .error-message{
-    color:orangered
+    color:orangered;
+    font-weight: bold;
+}
+.table th {
+    backgorund-color: brown;
+    color: black;
+    font-weight: bold;
+    padding: 12px 15px;
+    text-align: center;
+}
+.table td {
+    vertical-align: middle;
+    padding: 12px 15px;
+    color: #333333;
+    text-align: center;
+}
+.table tr:hover {
+    background-color: #F5F5F5;
+    cursor: pointer;
+}
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.table th, .table td {
+    border: 1px solid #dddddd;
+}
+.table th {
+    border-bottom: 2px solid #3E2723;
+}
+.table tr:nth-child(odd) {
+    background-color: #F9F9F9;
+}
+.table tr:nth-child(even) {
+    background-color: #FFFFFF;
 }
