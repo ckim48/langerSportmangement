@@ -29,7 +29,46 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <canvas id = "myBar"></canvas>
+            <canvas id = "myLine"></canvas>
+            <canvas id = "myPie"></canvas>
         </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script>
+        var ctx = document.getElementById("myBar").getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["A group", "B group"],
+                    datasets: [{
+                        label: 'Average Score',
+                        data: [10, 20]
+                    }]
+                }
+            });
+            var ctx2 = document.getElementById("myLine").getContext('2d');
+            new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: ["A group", "B group"],
+                    datasets: [{
+                        label: 'Average Score',
+                        data: [10, 20]
+                    }]
+                }
+            });
+            var ctx3 = document.getElementById("myPie").getContext('2d');
+            new Chart(ctx3, {
+                type: 'pie',
+                data: {
+                    labels: ["A group", "B group"],
+                    datasets: [{
+                        label: 'Average Score',
+                        data: [10, 20]
+                    }]
+                }
+            });
+    </script>
     </body>
 </html>
 {% endblock %}

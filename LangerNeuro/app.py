@@ -3,10 +3,11 @@
 # every css/js + image files go to 'static'
 
 
-from flask import Flask, render_template, request, url_for, redirect, flash, session #we are going to use flask for this python code
+from flask import Flask, render_template, request, url_for, redirect, flash, session, jsonify #we are going to use flask for this python code
 from datetime import timedelta
 import sqlite3
 import bcrypt
+import pyrebase
 app = Flask(__name__) # it creates an empty web application
 app.secret_key = "abc"
 app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=3)
@@ -14,6 +15,10 @@ app.config["PERMANENT_SESSION_LIFETIME"] = timedelta(hours=3)
 # As soon as user logs in
 # Session = {"username" : "test"}
 # added the homepage --> for now we dont have the html file for the homepage, but we just have "hello world"
+from config import firebaseConfig
+firebase = pyrebase.initialize_app(firebaseConfig)
+db = firebase.database()
+
 @app.route('/')
 def index():
     isLogin = False
@@ -25,6 +30,8 @@ def admin():
     isLogin = False
     if 'username' in session:
         isLogin = True
+    else:
+        return redirect(url_for('login'))
     conn = sqlite3.connect('static/database.db')
     cursor = conn.cursor()
     command = "SELECT username, gender, age, country, email FROM Users;"
@@ -43,6 +50,36 @@ def admin():
         users_country.append(user[3])
         users_email.append(user[4])
     return render_template('datadisplay.html', num_users = len(result),  isLogin=isLogin, users_index = users_index,  users_username = users_username, users_gender = users_gender, users_age = users_age, users_country = users_country, users_email = users_email)
+@app.route('/add_user', methods = ['POST'])
+def add_user():
+    username = request.form['username']
+    password = request.form['password']
+    bytes = password.encode('utf-8')
+    salt = bcrypt.gensalt()
+    hashed_password = bcrypt.hashpw(bytes, salt)
+    fullname = request.form['fullname']
+    age = request.form['age']
+    gender = request.form['gender']
+    country = request.form['country']
+    email = request.form['email']
+
+    user_data = {
+        "username" : username,
+        "password" : hashed_password,
+        "fullname" : fullname,
+        "age" : age,
+        "gender" : gender,
+        "country" : country,
+        "email" : email,
+
+    }
+    db.child("users").push(user_data)
+    return redirect('/')
+@app.route('/get_users', methods = ['GET'])
+def get_users():
+    users = db.child("users").get()
+    return jsonify(users.val()), 200
+
 @app.route('/login', methods = ["GET", "POST"] )
 def login():
     if request.method == "POST":
